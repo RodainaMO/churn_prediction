@@ -134,12 +134,4 @@ seaborn>=0.12
 
 ---
 
-## 👤 Author
 
-**Your Name**  
-📧 email@example.com  
-🔗 [LinkedIn](https://linkedin.com/in/yourprofile) | [GitHub](https://github.com/yourusername)
-
----
-
-*Built as part of a Data Science portfolio project.*
