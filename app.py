@@ -1,14 +1,3 @@
-"""
-        Customer Churn Prediction  Streamlit App            
-        Author  : Your Name                                  
-        Stack   : Python · Scikit-learn · XGBoost · SHAP    
-
-
-Run:
-    pip install streamlit pandas scikit-learn xgboost imbalanced-learn matplotlib seaborn plotly
-    streamlit run app.py
-"""
-
 import streamlit as st
 import pandas as pd
 import numpy as np

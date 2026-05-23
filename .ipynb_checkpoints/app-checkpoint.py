@@ -1,15 +1,3 @@
-"""
-╔══════════════════════════════════════════════════════════════╗
-║         Customer Churn Prediction — Streamlit App            ║
-║         Author  : Your Name                                  ║
-║         Stack   : Python · Scikit-learn · XGBoost · SHAP    ║
-╚══════════════════════════════════════════════════════════════╝
-
-Run:
-    pip install streamlit pandas scikit-learn xgboost imbalanced-learn matplotlib seaborn plotly
-    streamlit run app.py
-"""
-
 import streamlit as st
 import pandas as pd
 import numpy as np
@@ -20,7 +8,7 @@ from plotly.subplots import make_subplots
 
 warnings.filterwarnings("ignore")
 
-# ─────────────────────────── Page config ────────────────────────────────────
+# Page config 
 st.set_page_config(
     page_title="Churn Predictor",
     page_icon="📊",
@@ -28,7 +16,7 @@ st.set_page_config(
     initial_sidebar_state="expanded",
 )
 
-# ─────────────────────────── Custom CSS ─────────────────────────────────────
+# Custom CSS 
 st.markdown("""
 <style>
     /* ── Global ── */
@@ -78,10 +66,10 @@ st.markdown("""
 </style>
 """, unsafe_allow_html=True)
 
-# ─────────────────────────── Load / train model ──────────────────────────────
+#  Load / train model 
 @st.cache_resource(show_spinner="Training model on IBM Telco dataset…")
 def load_or_train_model():
-    """Load saved model or train fresh if not found."""
+    
 
     if os.path.exists("churn_model.pkl"):
         with open("churn_model.pkl", "rb") as f:
@@ -178,7 +166,7 @@ cat_features = artifacts["cat_features"]
 THRESHOLD   = artifacts["threshold"]
 TEST_AUC    = artifacts["test_auc"]
 
-# ─────────────────────────── Hero ───────────────────────────────────────────
+# Hero 
 st.markdown("""
 <div class="hero">
   <h1>📊 Customer Churn Predictor</h1>
@@ -186,7 +174,7 @@ st.markdown("""
 </div>
 """, unsafe_allow_html=True)
 
-# ─────────────────────────── Tabs ───────────────────────────────────────────
+# Tabs 
 tab1, tab2, tab3 = st.tabs(["🔮 Single Prediction", "📂 Batch Prediction", "📈 Model Insights"])
 
 # ═══════════════════════════ TAB 1 : SINGLE ══════════════════════════════════
@@ -328,18 +316,18 @@ with tab1:
 
         # ── Recommendations ───────────────────────────────────────────────
         if label == "CHURN":
-            st.markdown("### 💡 Recommended Retention Actions")
+            st.markdown("###  Recommended Retention Actions")
             recs = []
             if contract == "Month-to-month":
-                recs.append("📋 **Offer 1-year contract discount** — biggest churn driver")
+                recs.append(" **Offer 1-year contract discount** — biggest churn driver")
             if tenure < 12:
-                recs.append("🎁 **Enroll in loyalty onboarding program** — early tenure is highest risk")
+                recs.append(" **Enroll in loyalty onboarding program** — early tenure is highest risk")
             if monthly_charges > 70:
-                recs.append("💰 **Review pricing / offer bundle discount**")
+                recs.append(" **Review pricing / offer bundle discount**")
             if tech_support == "No":
-                recs.append("🔧 **Offer complimentary Tech Support trial**")
+                recs.append(" **Offer complimentary Tech Support trial**")
             if not recs:
-                recs.append("📞 **Proactive outreach with personalised offer**")
+                recs.append(" **Proactive outreach with personalised offer**")
             for r in recs:
                 st.markdown(f"- {r}")
 
@@ -501,7 +489,7 @@ with tab3:
 
     st.markdown("""
     ---
-    ### 📚 Key Business Insights
+    ###  Key Business Insights
     | Driver | Finding | Action |
     |---|---|---|
     | **Contract** | Month-to-month → 43% churn vs <5% for 2-yr | Incentivise long-term contracts |
